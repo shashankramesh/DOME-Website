@@ -7,5 +7,5 @@ Folder: DOME_GEAR-
   <p>
   Run the index.php on a server (XAMPP Apache).
   <p>
-  Note: Take care to provide the index.php with right python path in line:
+  Note: Take care to provide the index.php with right python path in line: 205
   </p>
