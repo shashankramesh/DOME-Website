@@ -16,5 +16,6 @@
 	<div>Pitting Factor of Safety: <?php echo $result->Sh; ?></div>
 
 	<!-- Export PDF Code !-->
+<button type="submit" onclick="window.open('file.doc')">Download!</button>
 
 	</form>
