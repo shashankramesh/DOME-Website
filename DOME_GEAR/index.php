@@ -10,8 +10,11 @@ $variable25 = $variable26 = '';
 $error_log = '';
 $error = ['variable1' =>'','variable2'=>'','variable3'=>''];
 $result = '';
+$Units = '';
+$US_Units = ["Velocity"=>"ft/min", "Force"=>"lbf", "stress"=>"kpsi", "length"=>"inch", "Torque"=>"lb-inch", "Omega"=>"rpm"];
+$SI_Units = ["Velocity"=>"m/s", "Force"=>"N", "stress"=>"MPa", "length"=>"mm", "Torque"=>"Nm", "Omega"=>"rpm"];
 
-if($_POST['submit'] == 'submit' || $_POST['submit'] == "Export PDF"){
+if(isset($_POST['submit'])){
 
 	if(empty($_POST['variable1'])){
 		$error['variable1'] =  "A variable is required";
@@ -199,20 +202,36 @@ if($_POST['submit'] == 'submit' || $_POST['submit'] == "Export PDF"){
 
 <?php
 
-	if($_POST['submit'] == 'submit')
+	if(isset($_POST['submit']) && isset($_POST['Units']))
 	{
-		$variable6 = 'SI';
-	    $command = escapeshellcmd("python Main.py $variable1 $variable2 $variable3 $variable4 $variable5 $variable6 $variable7 $variable8 $variable9 $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
-	    $output = exec($command, $err);
-	    $result = json_decode($output);
-	}
+		if($_POST['submit'] == 'submit')
+		{
+			if($_POST['Units'] == "US")
+			{
+				$variable4 = $variable4/8.85;
+				$variable9 = $variable9*0.0254;
+			}
+			$variable6 = 'SI';
+		    $command = escapeshellcmd("python Main.py $variable1 $variable2 $variable3 $variable4 $variable5 $variable6 $variable7 $variable8 $variable9 $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
+		    $output = exec($command, $err);
+		    $result = json_decode($output);
 
-	if($_POST['submit'] == 'Export PDF')
-	{
-		// shell_exec("python3 /home/abhishek/Desktop/mycode.py $variable1 $variable2 $variable3");
-	    $command = escapeshellcmd("python exportPDF.py $variable1 $variable2 $variable3 $variable4 $variable5 $variable6 $variable7 $variable8 $variable9 $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
-	    $output = exec($command, $err);
-	    echo 'Exported';
+		    if($_POST['Units'] == "US")
+		    {
+		    	$result->PLVel *= 196.85;
+		    	$result->Force *= 0.224809;
+		    	$result->sigB *= 0.000145038;
+		    	$result->sigC *= 0.145038;
+		    }
+		}
+
+		if($_POST['submit'] == 'Export PDF')
+		{
+			// shell_exec("python3 /home/abhishek/Desktop/mycode.py $variable1 $variable2 $variable3");
+		    $command = escapeshellcmd("python exportPDF.py $variable1 $variable2 $variable3 $variable4 $variable5 $variable6 $variable7 $variable8 $variable9 $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
+		    $output = exec($command, $err);
+		    echo 'Exported';
+		}
 	}
 
 ?>
@@ -239,4 +258,3 @@ if($_POST['submit'] == 'submit' || $_POST['submit'] == "Export PDF"){
 	</section>
 </body>
 </html>
-

@@ -11,10 +11,6 @@
 					</td>
 					<td>
 						<input name="variable4" type="number" value = "<?php echo $variable4 ?>" min="0" >
-						<select id="Torque_units">
-							<option selected>Nm</option>
-							<option>us_unit</option>				
-						</select>
 					</td>
 				</tr>
 				</div>
@@ -26,10 +22,6 @@
 					</td>
 					<td>
 						<input name="variable1" type="number" value = "<?php echo $variable1 ?>" min="0" >
-						<select id="speed_units">
-							<option selected>rpm</option>
-										
-						</select>
 					</td>
 				</tr>
 				</div>
@@ -53,10 +45,6 @@
 					</td>
 					<td>
 						<input name="variable9" type="number" min="0" value="15">
-						<select id="length_units">
-							<option selected>mm</option>
-							<option>inches</option>				
-						</select>
 					</td>
 				</tr>
 				</div>

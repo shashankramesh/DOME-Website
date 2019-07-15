@@ -1,5 +1,12 @@
+<form action="index.php" method="POST">
 <div>
-	<form action="index.php" method="POST">
+	<h2 align = 'center'>Units</h2>
+	<ul class = 'Units_List'>
+		<li><input type="radio" name="Units" value = "SI">SI</li>
+		<li><input type="radio" name="Units" value = "US">US</li>
+	</ul>
+</div>
+<div>
 		<table cellpadding="5" cellspacing="5" border="0" class = 'TableForm'>
 			<tbody>
 				<h2 align = 'center'>Parameters for Gear Assembly</h2>
@@ -12,10 +19,6 @@
 						</td>
 						<td>
 							<input name="variable2" value="2" type="number" min="0" >
-							<select id="length_units">
-								<option selected>mm</option>
-								<option>inches</option>				
-							</select>
 						</td>
 					</tr>
 					</div>
