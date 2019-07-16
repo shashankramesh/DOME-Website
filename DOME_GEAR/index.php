@@ -29,8 +29,18 @@ $error_log = '';
 $error = ['variable1' =>'','variable2'=>'','variable3'=>''];
 $result = '';
 $show_result = 0;
+$Units = 'SI';
 $US_Units = ["Velocity"=>"ft/min", "Force"=>"lbf", "stress"=>"kpsi", "length"=>"inch", "Torque"=>"lb-inch", "Omega"=>"rpm", "angle"=>"deg"];
 $SI_Units = ["Velocity"=>"m/s", "Force"=>"N", "stress"=>"MPa", "length"=>"mm", "Torque"=>"Nm", "Omega"=>"rpm", "angle"=>"deg"];
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(empty($_POST['Units'])){
+		$error['Units'] = "Enter units";
+	}
+	else{
+		$Units = $_POST['Units'];
+	}
+}
 
 if(isset($_POST['submit'])){
 
@@ -258,6 +268,7 @@ if(isset($_POST['submit'])){
 	}
 
 ?>
+
 
 
 <!DOCTYPE html>
