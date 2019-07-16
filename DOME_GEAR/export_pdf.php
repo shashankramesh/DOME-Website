@@ -1,22 +1,23 @@
+	<h2 class = 'ResultsHeading' align = 'center'>Results</h2>
 	<div>Pitch Line Velocity: 
-		<?php if(isset($_POST['submit']) && isset($_POST['Units'])){
+		<?php if(isset($_POST['submit'])){
 			echo $result->PLVel; echo " ";
-			if($_POST['Units']=="US"){
+			if(isset($_POST['Units']) && $_POST['Units']=="US"){
 				echo $US_Units["Velocity"];
 			}
-			if($_POST['Units']=="SI"){
+			if(isset($_POST['Units']) && $_POST['Units']=="SI"){
 				echo $SI_Units["Velocity"];
 			}
 		} ?>
 	</div>
 	
 	<div>Force on Gear Teeth:
-		<?php if(isset($_POST['submit']) && isset($_POST['Units'])){
+		<?php if(isset($_POST['submit'])){
 			echo $result->Force; echo " ";
-			if($_POST['Units']=="US"){
+			if(isset($_POST['Units']) && $_POST['Units']=="US"){
 				echo $US_Units["Force"];
 			}
-			if($_POST['Units']=="SI"){
+			if(isset($_POST['Units']) && $_POST['Units']=="SI"){
 				echo $SI_Units["Force"];
 			}
 		} ?>
@@ -59,12 +60,12 @@
 	</div>
 
 	<div>Bending Stress: 
-		<?php if(isset($_POST['submit']) && isset($_POST['Units'])){
+		<?php if(isset($_POST['submit'])){
 			echo $result->sigB; echo " ";
-			if($_POST['Units']=="US"){
+			if(isset($_POST['Units']) && $_POST['Units']=="US"){
 				echo $US_Units["stress"];
 			}
-			if($_POST['Units']=="SI"){
+			if(isset($_POST['Units']) && $_POST['Units']=="SI"){
 				echo $SI_Units["stress"];
 			}
 		} ?>
@@ -75,12 +76,12 @@
 	</div>
 
 	<div>Pitting Stress: 
-		<?php if(isset($_POST['submit']) && isset($_POST['Units'])){
+		<?php if(isset($_POST['submit'])){
 			echo $result->sigC; echo " ";
-			if($_POST['Units']=="US"){
+			if(isset($_POST['Units']) && $_POST['Units']=="US"){
 				echo $US_Units["stress"];
 			}
-			if($_POST['Units']=="SI"){
+			if(isset($_POST['Units']) && $_POST['Units']=="SI"){
 				echo $SI_Units["stress"];
 			}
 		} ?>
@@ -89,7 +90,6 @@
 	<div>
 		Pitting Factor of Safety: <?php if(isset($_POST['submit']) && isset($_POST['Units'])) echo $result->Sh; ?>
 	</div>
-
 	<!-- Export PDF Code !-->
 
 	</form>

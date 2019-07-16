@@ -10,7 +10,13 @@
 						Applied Torque
 					</td>
 					<td>
-						<input name="variable4" type="number" value = "<?php echo $variable4 ?>" min="0" >
+						<input name="variable4" type="number" value = "<?php echo $variable4 ?>" min="0" step = '0.001'>
+					</td>
+					<td>
+						<?php 
+						if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['Torque'];
+						if(isset($_POST['Units']) && $_POST['Units'] == 'US') echo $US_Units['Torque'];
+						 ?>
 					</td>
 				</tr>
 				</div>
@@ -21,7 +27,13 @@
 						Speed
 					</td>
 					<td>
-						<input name="variable1" type="number" value = "<?php echo $variable1 ?>" min="0" >
+						<input name="variable1" type="number" value = "<?php echo $variable1 ?>" min="0" step = '0.001'>
+					</td>
+					<td>
+						<?php 
+						if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['Omega'];
+						if(isset($_POST['Units']) && $_POST['Units'] == 'US') echo $US_Units['Omega'];
+						 ?>
 					</td>
 				</tr>
 				</div>
@@ -44,7 +56,13 @@
 						Face width
 					</td>
 					<td>
-						<input name="variable9" type="number" min="0" value="15">
+						<input name="variable9" type="number" min="0" value="<?php echo $variable9 ?>" step = '0.001'>
+					</td>
+					<td>
+						<?php 
+						if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['length'];
+						if(isset($_POST['Units']) && $_POST['Units']== 'US') echo $US_Units['length'];
+						 ?>
 					</td>
 				</tr>
 				</div>
@@ -69,7 +87,7 @@
 						Number of cycles
 					</td>
 					<td>
-						<input name="variable23" type="number" min="0" value="100000000">
+						<input name="variable23" type="number" min="0" value="<?php echo $variable23 ?>">
 					</td>
 				</tr>
 				</div>
@@ -80,7 +98,7 @@
 						Number of teeth
 					</td>
 					<td>
-						<input name="variable3" type="number" min="0" value="16">
+						<input name="variable3" type="number" min="0" value="<?php echo $variable3 ?>">
 					</td>
 				</tr>
 				</div>
@@ -156,7 +174,7 @@
 						Brinell hardness
 					</td>
 					<td>
-						<input name="variable24" type="number" min="0" value="200">
+						<input name="variable24" type="number" min="0" value="<?php echo $variable24 ?>">
 					</td>
 				</tr>
 				</div>

@@ -11,7 +11,7 @@
 							S
 						</td>
 						<td>
-							<input name="variable12" value="1" type="number" min="0" >
+							<input name="variable12" value="<?php echo $variable12 ?>" type="number" min="0" >
 						</td>
 					</tr>
 					</div>
@@ -22,7 +22,7 @@
 							S1
 						</td>
 						<td>
-							<input name="variable13" value="1" type="number" min="0" >
+							<input name="variable13" value="<?php echo $variable13 ?>" type="number" min="0" >
 						</td>
 					</tr>
 					</div>
@@ -33,7 +33,13 @@
 							Helix angle
 						</td>
 						<td>
-							<input name="Helix_angle" value="30" type="number" min="0" max="90">
+							<input name="Helix_angle" value="0" type="number" min="0" max="90">
+						</td>
+						<td>
+							<?php 
+							if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['angle'];
+							if(isset($_POST['Units']) && $_POST['Units'] == 'US') echo $US_Units['angle'];
+							 ?>
 						</td>
 					</tr>
 					</div>
@@ -44,7 +50,13 @@
 							pressure angle
 						</td>
 						<td>
-							<input name="variable17" value="22.5" type="number" min="0" max="90" step="0.01">
+							<input name="variable17" value="<?php echo $variable17 ?>" type="number" min="0" max="90" step="0.01">
+						</td>
+						<td>
+							<?php 
+							if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['angle'];
+							if(isset($_POST['Units']) && $_POST['Units'] == 'US') echo $US_Units['angle'];
+							 ?>
 						</td>
 					</tr>
 					</div>

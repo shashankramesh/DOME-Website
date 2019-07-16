@@ -2,8 +2,8 @@
 <div>
 	<h2 align = 'center'>Units</h2>
 	<ul class = 'Units_List'>
-		<li><input type="radio" name="Units" value = "SI">SI</li>
-		<li><input type="radio" name="Units" value = "US">US</li>
+		<li><input type="radio" name="Units" value = 'SI'>SI</li>
+		<li><input type="radio" name="Units" value = 'US'>US</li>
 	</ul>
 </div>
 <div>
@@ -18,7 +18,13 @@
 							Module
 						</td>
 						<td>
-							<input name="variable2" value="2" type="number" min="0" >
+							<input name="variable2" value = "<?php echo $variable2 ?>" type="number" min="0" step = '0.01'>
+						</td>
+						<td>
+							<?php 
+							if(isset($_POST['Units']) && $_POST['Units'] == 'SI') echo $SI_Units['length'];
+							if(isset($_POST['Units']) && $_POST['Units'] == 'US') echo $US_Units['length'];
+							 ?>
 						</td>
 					</tr>
 					</div>
@@ -29,7 +35,7 @@
 							Gear-ratio
 						</td>
 						<td>
-							<input name="variable15" value="2" type="number" min="1" >
+							<input name="variable15" value="<?php echo $variable15 ?>" type="number" min="1" step = '0.01'>
 						</td>
 					</tr>
 					</div>
@@ -40,7 +46,7 @@
 							Pinion teeth
 						</td>
 						<td>
-							<input name="variable10" value="16" type="number" min="1" step="1">
+							<input name="variable10" value="<?php echo $variable10 ?>" type="number" min="1" step="1">
 						</td>
 					</tr>
 					</div>
@@ -51,7 +57,7 @@
 							Quality Factor
 						</td>
 						<td>
-							<input name="variable5" type="number" min="6" max="12" value="8">
+							<input name="variable5" type="number" min="6" max="12" value="<?php echo $variable5 ?>">
 						</td>
 					</tr>
 					</div>
@@ -108,7 +114,7 @@
 							Reliability
 						</td>
 						<td>
-							<input name="variable20"  type="number" min="0" max="1" step="0.01"  value="0.95">
+							<input name="variable20"  type="number" min="0" max="1" step="0.01"  value="<?php echo $variable20 ?>">
 						</td>
 					</tr>
 					</div>
@@ -119,7 +125,7 @@
 							Pinion Brinell hardness
 						</td>
 						<td>
-							<input name="variable22" type="number" min="0" value="200">
+							<input name="variable22" type="number" min="0" value="<?php echo $variable22 ?>">
 						</td>
 					</tr>
 					</div>

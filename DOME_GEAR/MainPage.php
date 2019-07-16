@@ -1,35 +1,6 @@
 <?php 
 
 /* Form validation */
-$variable1 = 100;
-$variable2 = 1;
-$variable3 = 16;
-$variable4 = 1;
-$variable5 = 8;
-$variable7 = '';
-$variable8 = '';
-$variable9 = 15;
-$variable10 = 17;
-$variable11 = '';
-$variable12 = $variable13 = 1;
-$variable14 = '';
-$variable15 = 1;
-$variable16 = '';
-$variable17 = 20;
-$variable18 = '';
-$variable19 = '';
-$variable20 = 0.9;
-$variable21 = $variable22 = 200;
-$variable23 = 100000000;
-$variable24 = 200;
-$variable25 = $variable26 = '';
-
-	
-$error_log = '';
-$error = ['variable1' =>'','variable2'=>'','variable3'=>''];
-$result = '';
-$US_Units = ["Velocity"=>"ft/min", "Force"=>"lbf", "stress"=>"kpsi", "length"=>"inch", "Torque"=>"lb-inch", "Omega"=>"rpm", "angle"=>"deg"];
-$SI_Units = ["Velocity"=>"m/s", "Force"=>"N", "stress"=>"MPa", "length"=>"mm", "Torque"=>"Nm", "Omega"=>"rpm", "angle"=>"deg"];
 
 if(isset($_POST['submit'])){
 
@@ -220,9 +191,9 @@ if(isset($_POST['submit'])){
 <?php
 	if(isset($_POST['submit']))
 	{
-		if($_POST['submit'] == 'submit' && $_POST['Units'])
+		if($_POST['submit'] == 'submit')
 		{
-			if($_POST['Units'] == "US")
+			if($Units == "US")
 			{
 				$variable4 = $variable4/8.85;
 				$variable9 = $variable9*25.4;
@@ -232,7 +203,7 @@ if(isset($_POST['submit'])){
 		    $output = exec($command, $err);
 		    $result = json_decode($output);
 
-		    if($_POST['Units'] == "US")
+		    if($Units == "US")
 		    {
 		    	$result->PLVel *= 196.85;
 		    	$result->Force *= 0.224809;
@@ -248,6 +219,11 @@ if(isset($_POST['submit'])){
 		    $output = exec($command, $err);
 		    echo 'Exported';
 		}
+	}
+
+	if(isset($_POST['Units']))
+	{
+		$Units = $_POST['Units'];
 	}
 
 ?>
