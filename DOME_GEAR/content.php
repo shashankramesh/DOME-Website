@@ -2,8 +2,9 @@
 <div>
 	<h2 align = 'center'>Units</h2>
 	<ul class = 'Units_List'>
-		<li><input type="radio" name="Units" value = 'SI'>SI</li>
-		<li><input type="radio" name="Units" value = 'US'>US</li>
+		<li><input type="radio" name="Units" value = 'SI' >SI</li>
+		<li><input type="radio" name="Units" value = 'US' >US</li>
+		<li><input type="submit" name="submit" value = 'Update Units'></li>
 	</ul>
 </div>
 <div>
