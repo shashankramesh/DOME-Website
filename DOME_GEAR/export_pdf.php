@@ -91,5 +91,6 @@
 		Pitting Factor of Safety: <?php if(isset($_POST['submit']) && isset($_POST['Units']) && $show_result == 1) echo $result->Sh; ?>
 	</div>
 	<!-- Export PDF Code !-->
+<button type="submit" onclick="window.open('file.doc')">Download!</button>
 
 	</form>
