@@ -70,9 +70,9 @@
 						</td>
 						<td>
 							<select name="variable7">
-								<option selected>Uniform</option>
-								<option>LightShock</option>	
-								<option>MediumShock</option>			
+								<option <?php if($variable7 == 'Uniform') echo "selected" ?>>Uniform</option>
+								<option <?php if($variable7 == 'LightShock') echo "selected" ?>>LightShock</option>
+								<option <?php if($variable26 == 'MediumShock') echo "selected" ?>>MediumShock</option>			
 							</select>
 						</td>
 					</tr>
@@ -85,9 +85,9 @@
 						</td>
 						<td>
 							<select name="variable8">
-								<option selected>Uniform</option>
-								<option>ModerateShock</option>	
-								<option>HeavyShock</option>			
+								<option <?php if($variable8 == 'Uniform') echo "selected" ?>>Uniform</option>
+								<option <?php if($variable8 == 'ModerateShock') echo "selected" ?>>ModerateShock</option>
+								<option <?php if($variable8 == 'HeavyShock') echo "selected" ?>>HeavyShock</option>			
 							</select>
 						</td>
 					</tr>
@@ -100,10 +100,10 @@
 						</td>
 						<td>
 							<select name="variable11">
-								<option selected>CommercialEnclosed</option>
-								<option>PrecisionEnclosed</option>	
-								<option>OpenGearing</option>	
-								<option>ExtraPrecisionEnclosed</option>			
+								<option <?php if($variable11 == 'CommercialEnclosed') echo "selected" ?>>CommercialEnclosed</option>
+								<option <?php if($variable11 == 'PrecisionEnclosed') echo "selected" ?>>PrecisionEnclosed</option>
+								<option <?php if($variable11 == 'OpenGearing') echo "selected" ?>>OpenGearing</option>
+								<option <?php if($variable11 == 'ExtraPrecisionEnclosed') echo "selected" ?>>ExtraPrecisionEnclosed</option>
 							</select>
 						</td>
 					</tr>

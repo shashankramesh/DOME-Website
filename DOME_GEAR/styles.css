@@ -1,6 +1,13 @@
 <style>
-	
+	@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+
+	body{
+		margin: none;
+		padding: none;
+	}
+
 	.Heading{
+		padding-top: 100px;
 	}
 
 	.TableForm{
@@ -39,6 +46,33 @@
 
 	.exportPDFbutton{
 		font-size: 15px;
+	}
+
+	.Navigation{
+		margin: 0px;
+		position: fixed;
+		padding: 10px;
+		background-color: orange;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.Header{
+		list-style: none;
+	}
+
+	.Header li{
+		display: inline-block;
+		padding-right: 20px;
+		padding-left: 10px;
+		font: normal 300 25px/1 'Josefin Sans', sans-serif;
+	}
+
+	.Header li a{
+		text-decoration: none;
+		color: black;
+		font-weight: normal;
 	}
 
 </style>

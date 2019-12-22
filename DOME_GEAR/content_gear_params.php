@@ -4,6 +4,20 @@
 			<h2 align = 'center'>Parameters for Gear</h2>
 			<div>
 				<div>
+				<!-- Design !-->
+				<tr>
+					<td>
+						Design for
+					</td>
+					<td>
+						<select name="design">
+							<option <?php if($design == 'Pinion') echo "selected" ?>>Pinion</option>
+							<option <?php if($design == 'Gear') echo "selected" ?>>Gear</option>	
+						</select>
+					</td>
+				</tr>
+				</div>
+				<div>
 				<!-- Applied Torque !-->
 				<tr>
 					<td>
@@ -43,8 +57,8 @@
 					</td>
 					<td>
 						<select name="variable16">
-							<option selected>External</option>
-							<option>Internal</option>	
+							<option <?php if($variable16 == 'External') echo "selected" ?>>External</option>
+							<option <?php if($variable16 == 'Internal') echo "selected" ?>>Internal</option>
 						</select>
 					</td>
 				</tr>
@@ -74,8 +88,8 @@
 					</td>
 					<td>
 						<select name="variable14">
-							<option selected>Uncrowned</option>
-							<option>Crowned</option>	
+							<option <?php if($variable14 == 'Uncrowned') echo "selected" ?>>Uncrowned</option>
+							<option <?php if($variable14 == 'Crowned') echo "selected" ?>>Crowned</option>	
 						</select>
 					</td>
 				</tr>
@@ -91,18 +105,6 @@
 					</td>
 				</tr>
 				</div>
-				<div>
-				<!-- Number of teeth!-->
-				<tr>
-					<td>
-						Number of teeth
-					</td>
-					<td>
-						<input name="variable3" type="number" min="0" value="<?php echo $variable3 ?>">
-					</td>
-				</tr>
-				</div>
-				<div>
 				<!-- Gear Material !-->
 				<tr>
 					<td>
@@ -110,9 +112,9 @@
 					</td>
 					<td>
 						<select name="variable25">
-							<option selected>HS</option>
-							<option>NTHS</option>	
-							<option>NS</option>
+							<option <?php if($variable25 == 'HS') echo "selected" ?>>HS</option>
+							<option <?php if($variable25 == 'NTHS') echo "selected" ?>>NTHS</option>	
+							<option <?php if($variable25 == 'NS') echo "selected" ?>>NS</option>
 						</select>
 					</td>
 				</tr>
@@ -125,12 +127,12 @@
 					</td>
 					<td>
 						<select name="variable18">
-							<option selected>Steel</option>
-							<option>Malleable Iron</option>	
-							<option>Nodular Iron</option>
-							<option>Cast Iron</option>
-							<option>Aluminium Bronze</option>
-							<option>Tin Bronze</option>
+							<option <?php if($variable18 == 'Steel') echo "selected" ?>>Steel</option>
+							<option <?php if($variable18 == 'Malleable Iron') echo "selected" ?>>Malleable Iron</option>
+							<option <?php if($variable18 == 'Nodular Iron') echo "selected" ?>>Nodular Iron</option>
+							<option <?php if($variable18 == 'Cast Iron') echo "selected" ?>>Cast Iron</option>
+							<option <?php if($variable18 == 'Aluminium Bronze') echo "selected" ?>>Aluminium Bronze</option>
+							<option <?php if($variable18 == 'Tin Bronze') echo "selected" ?>>Tin Bronze</option>
 						</select>
 					</td>
 				</tr>
@@ -143,12 +145,12 @@
 					</td>
 					<td>
 						<select name="variable19">
-							<option selected>Steel</option>
-							<option>Malleable Iron</option>	
-							<option>Nodular Iron</option>
-							<option>Cast Iron</option>
-							<option>Aluminium Bronze</option>
-							<option>Tin Bronze</option>
+							<option <?php if($variable19 == 'Steel') echo "selected" ?>>Steel</option>
+							<option <?php if($variable19 == 'Malleable Iron') echo "selected" ?>>Malleable Iron</option>
+							<option <?php if($variable19 == 'Nodular Iron') echo "selected" ?>>Nodular Iron</option>
+							<option <?php if($variable19 == 'Cast Iron') echo "selected" ?>>Cast Iron</option>
+							<option <?php if($variable19 == 'Aluminium Bronze') echo "selected" ?>>Aluminium Bronze</option>
+							<option <?php if($variable19 == 'Tin Bronze') echo "selected" ?>>Tin Bronze</option>
 						</select>
 					</td>
 				</tr>
@@ -161,8 +163,8 @@
 					</td>
 					<td>
 						<select name="variable26">
-							<option selected>g1</option>
-							<option>g2</option>	
+							<option <?php if($variable26 == 'g1') echo "selected" ?>>g1</option>
+							<option <?php if($variable26 == 'g2') echo "selected" ?>>g2</option>	
 						</select>
 					</td>
 				</tr>

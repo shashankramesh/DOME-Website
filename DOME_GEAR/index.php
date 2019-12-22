@@ -5,10 +5,12 @@ $variable1 = 100;
 $variable2 = 1;
 $variable3 = 16;
 $variable4 = 1;
+$variable4US = 0;
 $variable5 = 8;
 $variable7 = '';
 $variable8 = '';
 $variable9 = 15;
+$variable9US = 0;
 $variable10 = 17;
 $variable11 = '';
 $variable12 = $variable13 = 1;
@@ -23,13 +25,14 @@ $variable21 = $variable22 = 200;
 $variable23 = 100000000;
 $variable24 = 200;
 $variable25 = $variable26 = '';
-
+$design = 'Pinion';
 	
 $error_log = '';
 $error = ['variable1' =>'','variable2'=>'','variable3'=>''];
 $result = '';
 $show_result = 0;
 $Units = 'SI';
+$PD = 'Yes';
 $US_Units = ["Velocity"=>"ft/min", "Force"=>"lbf", "stress"=>"kpsi", "length"=>"inch", "Torque"=>"lb-inch", "Omega"=>"rpm", "angle"=>"deg"];
 $SI_Units = ["Velocity"=>"m/s", "Force"=>"N", "stress"=>"MPa", "length"=>"mm", "Torque"=>"Nm", "Omega"=>"rpm", "angle"=>"deg"];
 
@@ -225,21 +228,40 @@ if(isset($_POST['submit'])){
 	else{
 		$variable26 = $_POST['variable26'];
 	}
+	if(empty($_POST['design'])){
+		$error['design'] =  "A variable is required";
+	}
+	else{
+		$design = $_POST['design'];
+	}
 }
 ?>
 
 <?php
+	if($design == "Gear")
+	{
+		$variable3 = $variable15*$variable10;
+	}
+	else
+	{
+		$variable3 = $variable10;
+	}
 	if(isset($_POST['submit']))
 	{
-		if($_POST['submit'] == 'submit' && $_POST['Units'])
+		if($_POST['submit'] == 'submit' || $_POST['submit'] == 'drawing' && $_POST['Units'])
 		{
 			if($_POST['Units'] == "US")
 			{
-				$variable4 = $variable4/8.85;
-				$variable9 = $variable9*25.4;
+				$variable4US = $variable4/8.85;
+				$variable9US = $variable9*25.4;
+			}
+			else
+			{
+				$variable4US = $variable4;
+				$variable9US = $variable9;
 			}
 			$variable6 = 'SI';
-		    $command = escapeshellcmd("python Main.py $variable1 $variable2 $variable3 $variable4 $variable5 $variable6 $variable7 $variable8 $variable9 $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
+		    $command = escapeshellcmd("python Main.py $variable1 $variable2 $variable3 $variable4US $variable5 $variable6 $variable7 $variable8 $variable9US $variable10 $variable11 $variable12 $variable13 $variable14 $variable15 $variable16 $variable17 $variable18 $variable19 $variable20 $variable21 $variable22 $variable23 $variable24 $variable25 $variable26");
 		    $output = exec($command, $err);
 		    $result = json_decode($output);
 		    $show_result = 1;
@@ -278,6 +300,11 @@ if(isset($_POST['submit'])){
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<nav class = 'Navigation'>
+		<ul class = 'Header'>
+			<li><a href="index.php">Gear Design</a></li>
+		</ul>
+	</nav>
 	<div>
 		<h1 class = 'Heading' align = 'center'>GEAR DESIGN</h1>
 	</div>
@@ -288,7 +315,10 @@ if(isset($_POST['submit'])){
 			<?php include 'content_mount_params.php' ?>
 		</div>
 		<div class = 'GUI Results'>
-			<?php include 'export_pdf.php' ?>
+			<?php include 'export_pdf.php'?>
+			<?php 
+			if(isset($_POST['submit']) && ($_POST['submit'] == 'submit'||$_POST['submit'] == 'drawing') && $_POST['Units'] && $_POST['PD'] == 'Yes')	include 'Production_Drawing.php';
+			else echo "</form>"; ?>
 		</div>
 	</section>
 </body>
