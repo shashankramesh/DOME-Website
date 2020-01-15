@@ -234,6 +234,12 @@ if(isset($_POST['submit'])){
 	else{
 		$design = $_POST['design'];
 	}
+	if(empty($_POST['PD'])){
+		$error['PD'] =  "A variable is required";
+	}
+	else{
+		$PD = $_POST['PD'];
+	}
 }
 ?>
 
@@ -274,6 +280,86 @@ if(isset($_POST['submit'])){
 		    	$result->sigC *= 0.145038;
 		    }
 		}
+
+//<!-- Exporting PDF -->
+//<?php 
+
+		    $servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "mydatabase";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			// Check connection
+			if ($conn->connect_error) {
+			    die("Connection failed: " . $conn->connect_error);
+			}
+
+			// Other factors
+			// sql to create table to store other safety factors
+			$conn->query("DROP TABLE IF EXISTS PDF");
+			$sql = "CREATE TABLE PDF(
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			Name VARCHAR(125),
+			Value FLOAT)";
+
+			if ($conn->query($sql) === TRUE) {
+			    echo "Table PDF created successfully";
+			} else {
+			    echo "Error creating table: " . $conn->error;
+			}
+
+			$sql = "INSERT INTO PDF (id, Name, Value) 
+			VALUES 
+			(1,'Pitch Line Velocity',$result->PLVel),
+			(2,'Force on Gear Teeth',$result->Force),
+			(3,'Dynamic Factor, Kv',$result->Kv),
+			(4,'Overload Factor',$result->Ko),
+			(5,'Size Factor',$result->Ko),
+			(6,'Load distribution Factor',$result->Kh),
+			(7,'Geometry Factor for Bending',$result->J),
+			(8,'Geometry Factor for Pitting',$result->I),
+			(9,'Relaibility Factor',$result->Kr),
+			(10,'Stress Cycle Factor for Bending',$result->Yn),
+			(11,'Stress Cycle Factor for Pitting',$result->Zn)";
+
+			if ($conn->query($sql) === TRUE) {
+			    echo "New record created successfully";
+			} else {
+			    echo "Error: " . "<br>" . $conn->error;
+			}
+
+			// FOS
+			// table to store main factor of safety (Bending and Pitting)
+			$conn->query("DROP TABLE IF EXISTS FOS");
+			$sql = "CREATE TABLE FOS(
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+			Name VARCHAR(125),
+			Value FLOAT)";
+
+			if ($conn->query($sql) === TRUE) {
+			    echo "Table FOS created successfully";
+			} else {
+			    echo "Error creating table: " . $conn->error;
+			}
+
+			// Inserting into FOS
+			$sql = "INSERT INTO FOS (id, Name, Value) 
+			VALUES 
+			(1,'Bending factor of safety, Sf ',$result->Sf),
+			(2,'Pitting factor of safety, Sf ',$result->Sh)";
+
+			if ($conn->query($sql) === TRUE) {
+			    echo "New record created successfully";
+			} else {
+			    echo "Error: " . "<br>" . $conn->error;
+			}
+			$conn->close();
+		
+	
+
+
 
 		if($_POST['submit'] == 'Export PDF')
 		{
@@ -317,8 +403,10 @@ if(isset($_POST['submit'])){
 		<div class = 'GUI Results'>
 			<?php include 'export_pdf.php'?>
 			<?php 
-			if(isset($_POST['submit']) && ($_POST['submit'] == 'submit'||$_POST['submit'] == 'drawing') && $_POST['Units'] && $_POST['PD'] == 'Yes')	include 'Production_Drawing.php';
-			else echo "</form>"; ?>
+			if(isset($_POST['submit']) && ($_POST['submit'] == 'submit'||$_POST['submit'] == 'drawing') && $_POST['Units'] && $PD == 'Yes')	include 'Production_Drawing.php';
+			else echo "</form
+
+			>"; ?>
 		</div>
 	</section>
 </body>

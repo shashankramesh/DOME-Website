@@ -91,7 +91,10 @@
 		Pitting Factor of Safety: <?php if(isset($_POST['submit']) && isset($_POST['Units']) && $show_result == 1) echo $result->Sh; ?>
 	</div>
 	<!-- Export PDF Code !-->
-<button type="submit" onclick="window.open('file.doc')">Download!</button>
+<!--<button type="submit" onclick="window.open('file.doc')">Download!</button>
+ --><form method="_POST">
+	<input type = 'submit' name = 'Gen_pdf' value = 'GeneratePdf' align ="centre" onclick="window.open('download_PDF.php')" ></input>
+</form>
 	<div>
 		Do you require Production Drawing?
 		<ul class = 'Units_List'>
@@ -99,3 +102,4 @@
 		<li><input type="radio" name="PD" value = 'No' <?php if(isset($PD) && $PD == 'No') echo 'checked'; ?>>No</li>
 		</ul>
 	</div>
+
